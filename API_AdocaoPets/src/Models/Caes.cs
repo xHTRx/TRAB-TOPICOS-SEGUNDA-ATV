@@ -1,7 +1,7 @@
 
-namespace API_AdocaoPets.Models
+namespace API_AdocaoPets.src.Models
 {
-    public class Caes : Pets
+    public class Caes : Pet
     {
         public int CaesID { get; set; }
 
