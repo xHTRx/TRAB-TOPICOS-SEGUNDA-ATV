@@ -1,3 +1,4 @@
+// Rotas/ROTA_GET.cs
 using Microsoft.AspNetCore.Mvc;
 using src.Context;
 using API_AdocaoPets.src.Models;

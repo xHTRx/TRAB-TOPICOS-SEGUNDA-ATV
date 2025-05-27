@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿//src/Program.cs
+using Microsoft.EntityFrameworkCore;
 using src.Context; // namespace onde está o PetContext
 using API_AdocaoPets.src.Models;  // se necessário para inicialização
 using Microsoft.AspNetCore.Builder;
@@ -21,11 +22,11 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Middleware para documentar a API via Swagger (ambiente de dev)
-if (app.Environment.IsDevelopment())
-{
+// if (app.Environment.IsDevelopment())
+
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+
 
 app.UseHttpsRedirection();
 

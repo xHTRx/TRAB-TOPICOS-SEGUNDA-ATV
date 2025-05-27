@@ -1,9 +1,10 @@
+//src/Controllers/PetsController.cs
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using src.Context;
 using API_AdocaoPets.src.Models;
 
-namespace API_AdocaoPets.src.Controller
+namespace API_AdocaoPets.src.Controllers
 {
     [ApiController]
     [Route("[controller]")]
