@@ -6,21 +6,21 @@ using API_AdocaoPets.src.Models;
 namespace API_AdocaoPets.Rotas
 {
     [ApiController]
-    [Route("api/[controller]")]
-    public class PetsController : ControllerBase
+[Route("api/pets")]
+public class PetsGetController : ControllerBase
+{
+    private readonly PetContext _context;
+    public PetsGetController(PetContext context) => _context = context;
+
+    [HttpGet]
+    public ActionResult<IEnumerable<Pet>> GetTodos()
+        => Ok(_context.Pets.ToList());
+
+    [HttpGet("{id}", Name = "GetPetById")]
+    public ActionResult<Pet> GetPorId(int id)
     {
-        private readonly PetContext _context;
-
-        public PetsController(PetContext context)
-        {
-            _context = context;
-        }
-
-        [HttpGet]
-        public ActionResult<IEnumerable<Pet>> GetTodos()
-        {
-            var pets = _context.Pets.ToList();
-            return Ok(pets); 
-        }
+        var pet = _context.Pets.Find(id);
+        return pet is null ? NotFound() : Ok(pet);
     }
+}
 }

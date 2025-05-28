@@ -13,10 +13,8 @@ namespace src.Context
         public DbSet<Pet> Pets { get; set; }
 
         // Se quiser adicionar outros modelos no futuro:
-        // public DbSet<Caes> Caes { get; set; }
-        // public DbSet<Gatos> Gatos { get; set; }
-        // public DbSet<Canil> Canis { get; set; }
-        // public DbSet<Contabilidade> Contabilidades { get; set; }
+        public DbSet<Canil> Canis { get; set; }
+        public DbSet<Contabilidade> Contabilidades { get; set; }
 
          // Caso precise configurar manualmente o SQLite
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -31,12 +29,18 @@ namespace src.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Pet>().ToTable("Pets");
+            modelBuilder.Entity<Contabilidade>().ToTable("Contabilidades");
 
             // Exemplo de configuração de campo obrigatório
             modelBuilder.Entity<Pet>()
                 .Property(p => p.Nome)
                 .IsRequired()
                 .HasMaxLength(100);
+
+                modelBuilder.Entity<Pet>()
+                .HasOne(p => p.Contabilidade)
+                .WithOne(c => c.Pet)
+                .HasForeignKey<Contabilidade>(c => c.PetId);
         }
     }
 }
