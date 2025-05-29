@@ -15,16 +15,8 @@ namespace API_AdocaoPets.src.Models
           public int PetId { get; set; }
           public Pet Pets { get; set; } = null!;
 
-         // Relacionamento com Contabilidade
-        public Contabilidade? Contabilidades { get; set; }
-
-
-
+ 
 
     }
-
-
-
-
 
 }
