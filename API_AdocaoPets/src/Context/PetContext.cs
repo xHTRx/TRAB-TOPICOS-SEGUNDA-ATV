@@ -11,8 +11,6 @@ namespace src.Context
         }
 
         public DbSet<Pet> Pets { get; set; }
-
-        // Se quiser adicionar outros modelos no futuro:
         public DbSet<Canil> Canis { get; set; }
         public DbSet<Contabilidade> Contabilidades { get; set; }
 
@@ -30,6 +28,7 @@ namespace src.Context
         {
             modelBuilder.Entity<Pet>().ToTable("Pets");
             modelBuilder.Entity<Contabilidade>().ToTable("Contabilidades");
+            modelBuilder.Entity<Canil>().ToTable("Canis");
 
             // Exemplo de configuração de campo obrigatório
             modelBuilder.Entity<Pet>()
