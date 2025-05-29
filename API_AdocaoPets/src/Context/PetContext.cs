@@ -6,9 +6,7 @@ namespace src.Context
 {
     public class PetContext : DbContext
     {
-        public PetContext(DbContextOptions<PetContext> options) : base(options)
-        {
-        }
+        public PetContext(DbContextOptions<PetContext> options) : base(options) {}
 
         public DbSet<Pet> Pets { get; set; }
         public DbSet<Canil> Canis { get; set; }
@@ -30,16 +28,20 @@ namespace src.Context
             modelBuilder.Entity<Contabilidade>().ToTable("Contabilidades");
             modelBuilder.Entity<Canil>().ToTable("Canis");
 
-            // Exemplo de configuração de campo obrigatório
             modelBuilder.Entity<Pet>()
                 .Property(p => p.Nome)
                 .IsRequired()
                 .HasMaxLength(100);
 
-                modelBuilder.Entity<Pet>()
+            modelBuilder.Entity<Pet>()
                 .HasOne(p => p.Contabilidade)
                 .WithOne(c => c.Pet)
                 .HasForeignKey<Contabilidade>(c => c.PetId);
+                
+            modelBuilder.Entity<Pet>()
+                .HasOne(p => p.Canil)
+                .WithMany(c => c.Pets)
+                .HasForeignKey(p => p.CanilId);
         }
     }
 }

@@ -14,8 +14,11 @@ namespace API_AdocaoPets.src.Models
         public string porte { get; set; } = string.Empty;
         public string Descricao { get; set; } = string.Empty;      // Informações adicionais
 
-         // Relacionamento com Contabilidade
-    public Contabilidade? Contabilidade { get; set; }
+        // Relacionamentos
+        public Contabilidade? Contabilidade { get; set; }
+    
+        public int CanilId { get; set; }
+        public Canil? Canil { get; set; }
         
     }
 }
