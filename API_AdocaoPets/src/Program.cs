@@ -5,6 +5,7 @@ using API_AdocaoPets.src.Models;  // se necessário para inicialização
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using API_AdocaoPets.src;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,5 +34,12 @@ app.UseHttpsRedirection();
 // Middleware de roteamento de endpoints
 app.UseAuthorization();
 app.MapControllers();
+
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<PetContext>();
+    DbInitializer.Initialize(db);
+}
 
 app.Run();

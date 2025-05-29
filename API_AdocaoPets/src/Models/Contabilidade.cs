@@ -10,13 +10,11 @@ namespace API_AdocaoPets.src.Models
         public double valorMedioVet { get; set; }
         public double valorMedioVac { get; set; }
 
-          public Pet? Pet { get; set; }  // Navegação
+        public Pet? Pet { get; set; }  // Navegação
 
-          public int PetId { get; set; }
-          public Pet Pets { get; set; } = null!;
-
- 
-
+        public int PetId { get; set; }
+        public Pet Pets { get; set; } = null!;
+          
     }
 
 }
